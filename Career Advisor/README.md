@@ -23,18 +23,18 @@ The project follows **Clean Architecture** principles to ensure scalability and 
 
 ### Component Breakdown:
 - **`app.py`**: User Interface layer (Streamlit). Handles rendering and event management.
-- **`services/gemini_service.py`**: API Handling Layer.
-- **`memory/conversation_manager.py`**: Memory Layer for session-based history.
-- **`prompts/prompt_templates.py`**: Role-based system prompts.
-- **`config.py`**: Configuration for API keys and hyperparameters.
-- **`utils/logger.py`**: Logging system. Implements file-based and console logging for API tracking and error debugging.
+- **`services/gemini_service.py`**: API Handling Layer. Manages streaming, error handling, and safety settings.
+- **`memory/conversation_manager.py`**: Memory Layer. Manages session-based, mode-specific chat history.
+- **`prompts/prompt_templates.py`**: Prompt Management. Stores role-based system instructions and configurable templates.
+- **`config.py`**: Configuration Layer. Centralized environment variable and hyperparameter management.
+- **`utils/logger.py`**: Logging Layer. Implements file-based and console logging for API tracking and error debugging.
 
 ---
 
 ## 4. Key Technical Features
-- **Modular Design**: AI logic is separated into `services/gemini_service.py`.
-- **Clean Architecture**: Dedicated modules for Memory, Prompts, Config, and Utils.
-- **Repository Integrity**: Restored all task files (zips, notebooks, and scripts) to the repository as requested.
+- **Secure API Management**: Utilizes `.env` for key isolation.
+- **Multi-Turn Context**: Preserves full conversation history per mode.
+- **Token Optimization**: Auto-trims history to stay within context windows.
 - **Keyboard Efficiency**: Custom JavaScript injection for `Ctrl+K` (Clear History) and native `Shift+Enter` (Multi-line).
 - **Production Logging**: All API calls and errors are logged to `logs/app.log`.
 
