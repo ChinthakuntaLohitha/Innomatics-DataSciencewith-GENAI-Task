@@ -22,12 +22,10 @@ The project follows **Clean Architecture** principles to ensure scalability and 
 `User` -> `UI (Streamlit)` -> `Backend Logic` -> `Prompt Engineering` -> `Gemini API` -> `Response Processing` -> `UI Rendering`
 
 ### Component Breakdown:
-- **`app.py`**: User Interface layer (Streamlit). Handles rendering and event management.
-- **`services/gemini_service.py`**: API Handling Layer. Manages streaming, error handling, and safety settings.
-- **`memory/conversation_manager.py`**: Memory Layer. Manages session-based, mode-specific chat history.
-- **`prompts/prompt_templates.py`**: Prompt Management. Stores role-based system instructions and configurable templates.
-- **`config.py`**: Configuration Layer. Centralized environment variable and hyperparameter management.
-- **`utils/logger.py`**: Logging Layer. Implements file-based and console logging for API tracking and error debugging.
+- **`app.py`**: The single core file containing all UI, AI service logic, memory management, and prompt templates.
+- **`config.py`**: (Consolidated into app.py) Configuration management.
+- **`requirements.txt`**: Standard dependency list.
+- **`utils/logger.py`**: (Consolidated into app.py) Logging system.
 
 ---
 
@@ -35,6 +33,8 @@ The project follows **Clean Architecture** principles to ensure scalability and 
 - **Secure API Management**: Utilizes `.env` for key isolation.
 - **Multi-Turn Context**: Preserves full conversation history per mode.
 - **Token Optimization**: Auto-trims history to stay within context windows.
+### 1. Unified Architecture
+- **Single-File App**: All logic (UI, AI Service, Memory, Prompts) is consolidated into `app.py` for maximum simplicity and one-file deployment as requested.
 - **Keyboard Efficiency**: Custom JavaScript injection for `Ctrl+K` (Clear History) and native `Shift+Enter` (Multi-line).
 - **Production Logging**: All API calls and errors are logged to `logs/app.log`.
 
